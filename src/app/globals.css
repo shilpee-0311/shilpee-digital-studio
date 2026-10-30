@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --navy-950: #070b16;
+  --navy-900: #0b1224;
+  --navy-800: #121a33;
+  --navy-700: #1b2550;
+  --purple-700: #6d28d9;
+  --purple-600: #7c3aed;
+  --purple-500: #8b5cf6;
+  --lavender-200: #ddd6fe;
+  --lavender-100: #ede9fe;
+  --lavender-50: #f5f3ff;
+  --surface: #ffffff;
+  --cream: #f7f5ff;
+  --ink: #0f172a;
+  --muted: #5b6478;
+  --line: rgb(124 58 237 / 0.18);
+}
+
+@theme {
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-purple-700: var(--purple-700);
+  --color-purple-600: var(--purple-600);
+  --color-purple-500: var(--purple-500);
+  --color-lavender-200: var(--lavender-200);
+  --color-lavender-100: var(--lavender-100);
+  --color-lavender-50: var(--lavender-50);
+  --color-surface: var(--surface);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--purple-600);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,88 @@
+// Shilpee Digital Studio — Prisma schema
+//
+// Local development: SQLite (DATABASE_URL="file:./dev.db")
+// Production: change `provider` below to "postgresql" and point DATABASE_URL
+// at your Postgres instance, then run:
+//   npx prisma migrate deploy
+//
+// Do not put credentials in this file.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("admin_users")
+}
+
+model Enquiry {
+  id          String        @id @default(uuid())
+  name        String
+  email       String
+  phone       String?
+  serviceType String
+  budgetRange String?
+  timeline    String?
+  message     String
+  status      String        @default("NEW")
+  isArchived  Boolean       @default(false)
+  isStarred   Boolean       @default(false)
+  source      String        @default("WEBSITE_FORM")
+  ipAddress   String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  notes       EnquiryNote[]
+
+  @@index([status, createdAt])
+  @@index([serviceType])
+  @@index([isArchived])
+  @@map("enquiries")
+}
+
+model EnquiryNote {
+  id        String   @id @default(uuid())
+  enquiryId String
+  enquiry   Enquiry  @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  content   String
+  author    String   @default("Admin")
+  createdAt DateTime @default(now())
+
+  @@index([enquiryId])
+  @@map("enquiry_notes")
+}
+
+/// Sample work only. badgeType must be "Demo Project" or "Concept Showcase".
+model PortfolioProject {
+  id              String   @id @default(uuid())
+  slug            String   @unique
+  title           String
+  category        String
+  badgeType       String   @default("Demo Project")
+  summary         String
+  fullDescription String
+  techStack       String
+  features        String
+  deliverables    String?
+  previewUrl      String?
+  thumbnail       String
+  isFeatured      Boolean  @default(true)
+  sortOrder       Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([category, sortOrder])
+  @@map("portfolio_projects")
+}
