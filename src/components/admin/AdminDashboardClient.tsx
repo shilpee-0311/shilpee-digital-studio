@@ -265,6 +265,14 @@ export function AdminDashboardClient({ username }: { username: string }) {
             </div>
 
             <a
+              href="/admin/blog"
+              className="inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-950/60 px-3 py-1.5 text-lavender-100 transition-colors hover:border-purple-400 hover:text-white"
+            >
+              <FileText size={13} aria-hidden />
+              <span>Manage Blog</span>
+            </a>
+
+            <a
               href="/"
               target="_blank"
               rel="noopener noreferrer"

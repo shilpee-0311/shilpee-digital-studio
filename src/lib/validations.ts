@@ -7,6 +7,7 @@ export const SERVICE_TYPES = [
   "graphic-design",
   "digital-invitations",
   "social-media",
+  "motion-animation",
 ] as const;
 
 export const SERVICE_NAMES: Record<(typeof SERVICE_TYPES)[number], string> = {
@@ -16,6 +17,7 @@ export const SERVICE_NAMES: Record<(typeof SERVICE_TYPES)[number], string> = {
   "graphic-design": "Graphic Design & Canva",
   "digital-invitations": "Digital Invitations",
   "social-media": "Social Media Management",
+  "motion-animation": "Motion Animation & VFX",
 };
 
 export const ENQUIRY_STATUSES = [
@@ -84,3 +86,38 @@ export const addEnquiryNoteSchema = z.object({
     .min(2, "Note content must be at least 2 characters")
     .max(1500, "Note cannot exceed 1500 characters"),
 });
+
+export const blogPostSchema = z.object({
+  title: z
+    .string()
+    .trim()
+    .min(3, "Title must be at least 3 characters")
+    .max(200, "Title cannot exceed 200 characters"),
+  slug: z
+    .string()
+    .trim()
+    .min(3, "Slug must be at least 3 characters")
+    .max(200, "Slug cannot exceed 200 characters"),
+  excerpt: z
+    .string()
+    .trim()
+    .min(10, "Excerpt must be at least 10 characters")
+    .max(600, "Excerpt cannot exceed 600 characters"),
+  content: z
+    .string()
+    .trim()
+    .min(10, "Content must be at least 10 characters"),
+  coverImage: z.string().trim().optional().or(z.literal("")),
+  coverImageAlt: z.string().trim().max(200).optional().or(z.literal("")),
+  category: z.string().trim().min(2, "Category is required"),
+  categorySlug: z.string().trim().min(2, "Category slug is required"),
+  tags: z.string().trim().optional().or(z.literal("")),
+  author: z.string().trim().min(2).default("Shilpee Srivastava"),
+  status: z.enum(["DRAFT", "PUBLISHED"]).default("DRAFT"),
+  isFeatured: z.boolean().default(false),
+  seoTitle: z.string().trim().max(200).optional().or(z.literal("")),
+  seoDescription: z.string().trim().max(300).optional().or(z.literal("")),
+  readingTime: z.number().int().min(1).max(60).default(5),
+});
+
+export type BlogPostInput = z.infer<typeof blogPostSchema>;

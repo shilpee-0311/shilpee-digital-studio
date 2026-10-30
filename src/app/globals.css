@@ -53,6 +53,115 @@ body {
   outline-offset: 3px;
 }
 
+/* 3D Perspective & Motion Design Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-600 {
+  perspective: 600px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Keyframe Animations */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-1.5deg);
+  }
+}
+
+@keyframes rotate-3d-slow {
+  0% {
+    transform: rotateX(20deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(10deg) rotateY(180deg);
+  }
+  100% {
+    transform: rotateX(20deg) rotateY(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.85));
+  }
+}
+
+@keyframes light-streak {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: -600;
+  }
+}
+
+@keyframes morph-blob {
+  0%, 100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+  33% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+  }
+  66% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+  }
+}
+
+@keyframes neon-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 8s ease-in-out infinite;
+}
+
+.animate-rotate-3d {
+  animation: rotate-3d-slow 22s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3.5s ease-in-out infinite;
+}
+
+.animate-morph-blob {
+  animation: morph-blob 9s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -64,5 +173,13 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .animate-float-slow,
+  .animate-float-reverse,
+  .animate-rotate-3d,
+  .animate-pulse-glow,
+  .animate-morph-blob {
+    animation: none !important;
   }
 }

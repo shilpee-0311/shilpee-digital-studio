@@ -11,6 +11,7 @@ export type Service = {
   description: string;
   offerings: string[];
   outcomes: string[];
+  customHref?: string;
 };
 
 export const services: Service[] = [ // slugs must match SERVICE_TYPES
@@ -60,20 +61,23 @@ export const services: Service[] = [ // slugs must match SERVICE_TYPES
     title: "Data Analytics & Automation",
     shortTitle: "Analytics",
     summary:
-      "Python, MySQL, Pandas, NumPy, Excel, Power BI, data cleaning and reporting.",
+      "Python, MySQL, Pandas, NumPy, Power BI, Excel, business data analysis and exploratory AI prototypes.",
     description:
-      "From messy source files to decision-ready reports. Pipelines are documented, repeatable and designed so you can refresh numbers without starting from scratch each month.",
+      "Transforming raw datasets, spreadsheets, and scattered logs into clean, decision-ready intelligence. We construct documented data cleaning workflows, relational SQL queries, and interactive Power BI dashboards for operational visibility. Additionally, we build experimental NLP and predictive modeling prototypes for document matching and trend exploration.",
     offerings: [
-      "Data cleaning and transformation",
-      "MySQL schema and query work",
-      "Python (Pandas, NumPy) analysis",
-      "Excel models and automated reports",
-      "Power BI dashboards",
+      "Business data analysis & exploratory analysis (EDA)",
+      "Data cleaning and transformation (Python Pandas, NumPy)",
+      "Power BI reporting dashboards & interactive KPI views",
+      "SQL-based data analysis & relational MySQL schema design",
+      "Excel analytical models & automated spreadsheet reporting",
+      "Predictive modelling prototypes (regression & classification concepts)",
+      "NLP-based text analysis & document matching prototypes (TF-IDF)",
     ],
     outcomes: [
-      "Repeatable cleaning and reporting steps",
-      "Clear KPI views for operators and owners",
-      "Handover notes so the work can be rerun",
+      "Repeatable, automated data cleaning and reporting workflows",
+      "Interactive executive dashboards with actionable metric tracking",
+      "Clear distinction between production-ready pipelines and experimental models",
+      "Well-documented code scripts and transparent query handover",
     ],
   },
   {
@@ -137,6 +141,28 @@ export const services: Service[] = [ // slugs must match SERVICE_TYPES
       "On-brand creatives and captions",
       "Simple reporting you can act on",
     ],
+  },
+  {
+    slug: "motion-animation",
+    title: "Motion Animation & VFX",
+    shortTitle: "Motion",
+    summary:
+      "Motion graphics, 2D/3D animation, visual effects, logo reveals, product animations and social media reels.",
+    description:
+      "Creative motion design and visual effects that bring brands, digital products, and cinematic campaigns to life. From subtle UI micro-interactions to 3D product exploding assemblies and high-impact social reels.",
+    offerings: [
+      "Motion graphics & kinetic typography",
+      "2D & 3D product animations",
+      "VFX compositing & particle simulations",
+      "Logo animation & animated stingers",
+      "Social media reels & promotional video graphics",
+    ],
+    outcomes: [
+      "Cinema-grade 60 FPS animation masters",
+      "Multi-platform optimization (WebM, MP4, Lottie, GIF)",
+      "Bespoke storyboards and dynamic visual rhythm",
+    ],
+    customHref: "/motion-animation",
   },
 ];
 

@@ -86,3 +86,30 @@ model PortfolioProject {
   @@index([category, sortOrder])
   @@map("portfolio_projects")
 }
+
+model BlogPost {
+  id             String    @id @default(uuid())
+  title          String
+  slug           String    @unique
+  excerpt        String
+  content        String
+  coverImage     String?
+  coverImageAlt  String?
+  category       String
+  categorySlug   String
+  tags           String?
+  author         String    @default("Shilpee Srivastava")
+  status         String    @default("DRAFT") // DRAFT | PUBLISHED
+  isFeatured     Boolean   @default(false)
+  seoTitle       String?
+  seoDescription String?
+  readingTime    Int       @default(5)
+  publishedAt    DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status, publishedAt])
+  @@index([categorySlug])
+  @@index([isFeatured])
+  @@map("blog_posts")
+}

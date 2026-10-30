@@ -14,8 +14,11 @@ export const site = {
   whatsapp: readPublic("NEXT_PUBLIC_STUDIO_WHATSAPP"),
   instagram: readPublic("NEXT_PUBLIC_INSTAGRAM_URL"),
   facebook: readPublic("NEXT_PUBLIC_FACEBOOK_URL"),
-  linkedin: readPublic("NEXT_PUBLIC_LINKEDIN_URL"),
-  github: readPublic("NEXT_PUBLIC_GITHUB_URL") || "https://github.com/shilpee-0311",
+  linkedin:
+    readPublic("NEXT_PUBLIC_LINKEDIN_URL") ||
+    "https://linkedin.com/in/shilpee-srivastava0311",
+  github:
+    readPublic("NEXT_PUBLIC_GITHUB_URL") || "https://github.com/shilpee-0311",
 } as const;
 
 export function whatsappHref(): string | null {

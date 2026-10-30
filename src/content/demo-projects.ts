@@ -1,4 +1,8 @@
-export const PORTFOLIO_BADGES = ["Demo Project", "Concept Showcase"] as const;
+export const PORTFOLIO_BADGES = [
+  "Demo Project",
+  "Concept Showcase",
+  "Personal Project",
+] as const;
 export type PortfolioBadge = (typeof PORTFOLIO_BADGES)[number];
 
 export type DemoProject = {
@@ -174,6 +178,37 @@ export const demoProjects: DemoProject[] = [
     thumbnail: "/demo/fitflow.svg",
     isFeatured: true,
     sortOrder: 6,
+  },
+  {
+    slug: "ai-resume-intelligence-platform",
+    title: "AI Resume Intelligence Platform",
+    category: "data-analytics",
+    badgeType: "Personal Project",
+    summary:
+      "An NLP-based resume analysis application that extracts resume text from PDF documents, applies text preprocessing and TF-IDF feature extraction, and compares candidate profiles with job descriptions using cosine similarity.",
+    fullDescription:
+      "An NLP-based resume analysis application that extracts resume text from PDF documents, applies text preprocessing and TF-IDF feature extraction, and compares candidate profiles with job descriptions using cosine similarity. Labelled clearly as an independent personal technical project demonstrating applied Python, NLP, and machine learning concepts.",
+    techStack:
+      "Python, Pandas, Scikit-learn, NLP, TF-IDF, Cosine Similarity, Streamlit, Git",
+    features: [
+      "PDF resume parsing and extraction",
+      "Text preprocessing, normalization and cleaning",
+      "TF-IDF vectorization for vocabulary weighting",
+      "Resume and job-description matching via cosine similarity",
+      "Skill-gap identification and keyword overlap analysis",
+      "Interactive Streamlit web interface with immediate visual scoring",
+    ],
+    deliverables: [
+      "Streamlit web application prototype",
+      "Documented NLP pipeline and similarity scoring engine",
+      "Public GitHub repository with reproducible codebase",
+    ],
+    previewUrl: "",
+    githubUrl:
+      "https://github.com/shilpee-0311/AI-Powered-Resume-Intelligence-Platform",
+    thumbnail: "/demo/resume-intelligence.svg",
+    isFeatured: true,
+    sortOrder: 7,
   },
 ];
 

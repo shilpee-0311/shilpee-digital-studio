@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import { Github } from "@/components/ui/GithubIcon";
+import { Linkedin } from "@/components/ui/LinkedinIcon";
 import { footerNav, mainNav } from "@/content/navigation";
+import { services } from "@/content/services";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
 import { site, whatsappHref } from "@/lib/site";
@@ -10,13 +12,14 @@ export function Footer() {
   const whatsapp = whatsappHref();
 
   return (
-    <footer className="mt-auto bg-navy-950 text-lavender-200">
+    <footer className="mt-auto bg-navy-950 text-lavender-200 border-t border-white/10">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="lg:col-span-2">
+        {/* Brand identity column */}
+        <div>
           <Logo light />
-          <p className="mt-4 max-w-md text-sm leading-6 text-lavender-100/90">{site.tagline}</p>
-          <p className="mt-2 max-w-md text-xs leading-5 text-lavender-200/70">
-            Freelance digital studio crafting production-ready web solutions, custom applications, data workflows, graphic assets, and social campaigns with transparent, honest scopes.
+          <p className="mt-4 text-sm leading-6 text-lavender-100/90">{site.tagline}</p>
+          <p className="mt-2 text-xs leading-5 text-lavender-200/70">
+            Freelance digital studio crafting production-ready web solutions, custom applications, data workflows, motion graphics, graphic assets, and social campaigns with transparent, honest scopes.
           </p>
           {site.github ? (
             <div className="mt-5">
@@ -33,6 +36,30 @@ export function Footer() {
             </div>
           ) : null}
         </div>
+
+        {/* Services column */}
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
+            Services & Practices
+          </p>
+          <ul className="mt-4 space-y-2 text-sm">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  className="transition-colors hover:text-white inline-flex items-center gap-1.5"
+                  href={service.customHref || `/services/${service.slug}`}
+                >
+                  {service.slug === "motion-animation" ? (
+                    <Sparkles size={13} className="text-purple-400" aria-hidden />
+                  ) : null}
+                  <span>{service.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Navigation column */}
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
             Navigation
@@ -47,6 +74,8 @@ export function Footer() {
             ))}
           </ul>
         </div>
+
+        {/* Connect & Legal column */}
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
             Connect & Legal
@@ -81,6 +110,19 @@ export function Footer() {
                   target="_blank"
                 >
                   WhatsApp Quick Chat
+                </a>
+              </li>
+            ) : null}
+            {site.linkedin ? (
+              <li>
+                <a
+                  className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin size={14} aria-hidden />
+                  <span>LinkedIn Profile</span>
                 </a>
               </li>
             ) : null}

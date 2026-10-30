@@ -7,6 +7,7 @@ import {
   Palette,
   Mail,
   Share2,
+  Film,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
@@ -20,7 +21,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "Services & Capabilities",
   description:
-    "Explore our six digital service practices: Website Development, Software Applications, Data Analytics, Graphic Design, Digital Invitations, and Social Media Management.",
+    "Explore our seven digital service practices: Website Development, Software Applications, Data Analytics, Motion Animation & VFX, Graphic Design, Digital Invitations, and Social Media Management.",
 };
 
 const serviceIcons: Record<string, typeof Globe> = {
@@ -30,6 +31,7 @@ const serviceIcons: Record<string, typeof Globe> = {
   "graphic-design": Palette,
   "digital-invitations": Mail,
   "social-media": Share2,
+  "motion-animation": Film,
 };
 
 export default function ServicesPage() {
@@ -38,15 +40,16 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services & Practices"
         title="Engineering & Creative Solutions Built for Purpose"
-        description="Six dedicated practice areas crafted for clarity, scalability, and impact. Every project is scoped with written milestones, transparent pricing, and zero inflated promises."
+        description="Seven dedicated practice areas crafted for clarity, scalability, and impact. Every project is scoped with written milestones, transparent pricing, and zero inflated promises."
       />
 
       <Section className="bg-cream">
         <Container className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => {
             const Icon = serviceIcons[service.slug] || Globe;
+            const targetHref = service.customHref || `/services/${service.slug}`;
             return (
-              <Link key={service.slug} href={`/services/${service.slug}`}>
+              <Link key={service.slug} href={targetHref}>
                 <Card className="flex h-full flex-col justify-between transition-all hover:-translate-y-1 hover:border-purple-500/30 hover:shadow-lg">
                   <div>
                     <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-purple-700">
@@ -94,7 +97,7 @@ export default function ServicesPage() {
               Need a multi-service digital solution?
             </h2>
             <p className="mt-3 text-sm leading-6 text-muted">
-              Many clients combine website development with graphic branding and monthly social media management, or pair software tools with automated data analytics. Custom bundled scopes are available with unified milestone billing.
+              Many clients combine website development with motion graphics and monthly social media management, or pair software tools with automated data analytics. Custom bundled scopes are available with unified milestone billing.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="/contact">Request Custom Quotation</Button>
